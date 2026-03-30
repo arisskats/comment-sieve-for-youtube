@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile, copyFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile, copyFile, readdir } from "node:fs/promises";
 import { existsSync, watch } from "node:fs";
 import { resolve, dirname, relative, extname } from "node:path";
 
@@ -117,12 +117,34 @@ async function copyIfExists(inputPath, outputPath) {
   await copyFile(inputPath, outputPath);
 }
 
+async function copyDirIfExists(inputDir, outputDir) {
+  if (!existsSync(inputDir)) {
+    return;
+  }
+
+  await ensureDir(outputDir);
+  const entries = await readdir(inputDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const sourcePath = resolve(inputDir, entry.name);
+    const targetPath = resolve(outputDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyDirIfExists(sourcePath, targetPath);
+      continue;
+    }
+
+    await copyIfExists(sourcePath, targetPath);
+  }
+}
+
 async function build() {
   await rm(distRoot, { recursive: true, force: true });
   await ensureDir(resolve(distRoot, "assets"));
 
   await copyIfExists(resolve(root, "manifest.json"), resolve(distRoot, "manifest.json"));
   await copyIfExists(resolve(srcRoot, "content", "content.css"), resolve(distRoot, "assets", "content.css"));
+  await copyDirIfExists(resolve(srcRoot, "assets", "icons"), resolve(distRoot, "assets", "icons"));
   const bundle = await bundleEntry(resolve(srcRoot, "content", "index.ts"));
   await writeFile(resolve(distRoot, "assets", "content.js"), bundle, "utf8");
 }

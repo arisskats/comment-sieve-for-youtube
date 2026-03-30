@@ -3,10 +3,10 @@
 ## Remaining steps before submission
 
 1. Create final branding assets.
-   - Add a 128x128 extension icon to the manifest package.
-   - Prepare any additional icon sizes needed for the store listing.
+   - Replace the bundled placeholder icon set in `src/assets/icons/` with final brand artwork when ready.
+   - Keep the manifest package sizes at 16/32/48/128.
 2. Capture real product screenshots from Chrome on YouTube watch pages.
-   - Use clean examples that show spam filtering, labels, and the settings panel.
+   - Follow `SCREENSHOTS_PLAN.md` exactly so the store gallery is consistent.
 3. Decide the publisher contact details.
    - Add a support email to the privacy policy and store listing.
 4. Finalize legal copy.
@@ -29,11 +29,12 @@
 8. Complete the Chrome Web Store listing fields.
    - Product title: `Comment Sieve for YouTube`
    - Short description and full description from `STORE_LISTING.md`
-   - Category, language, screenshots, privacy disclosures, and support contact
+   - Category, language, screenshots, privacy disclosures, support contact, and final icon artwork
 
 ## Known weak points to review before submission
 
 - The classifier is heuristic and not robust enough to market as high-accuracy moderation.
 - No automated test suite currently guards classifier regressions.
 - The panel UX works, but it is still closer to an MVP utility overlay than a fully refined product UI.
-- The product currently targets YouTube watch pages only, not the broader YouTube surface.
+- The product currently targets desktop YouTube watch pages only, not the broader YouTube surface.
+- The bundled icon pack is intentionally a placeholder and should be replaced before public launch if stronger branding is required.

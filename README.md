@@ -5,13 +5,14 @@ A Chrome extension that classifies YouTube desktop comments with deterministic h
 ## Features
 
 - Manifest V3 Chrome extension
-- Content script on `youtube.com/watch*`
+- Content script on desktop `youtube.com/watch*`
 - Top-level comment scanning with lightweight badge injection
 - Deterministic categories: `toxic`, `spam`, `question`, `positive`, `neutral`
 - Greeklish handling modes: `All comments`, `Prefer Greek`, `Hide Greeklish-heavy`
 - Stronger default spam filtering and locally saved blocked keywords
 - Floating filter panel with grouped controls, saved keywords, and reset
 - Dynamic comment handling through `MutationObserver`
+- Bundled placeholder extension icons in 16/32/48/128 for unpacked testing and store packaging
 
 ## Local setup
 
@@ -27,10 +28,22 @@ npm run build
    - Click `Load unpacked`
    - Select this repo's `dist` folder
 
+## Branding assets
+
+- Extension icons live in `src/assets/icons/` and are copied into `dist/assets/icons/` during build.
+- The current PNG set is a clean placeholder package intended to unblock Chrome Web Store prep.
+- `src/assets/icons/icon-source.svg` is the editable vector reference.
+- To regenerate the PNG sizes locally, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/generate-icons.ps1
+```
+
 ## Architecture
 
 - `manifest.json`: MV3 extension manifest.
 - `scripts/build.mjs`: dependency-free local bundler that emits a single content script for Chrome.
+- `scripts/generate-icons.ps1`: local icon generator for the packaged placeholder PNG sizes.
 - `src/content/index.ts`: entry point, bootstraps filtering and observation.
 - `src/content/classifier.ts`: deterministic comment classification and Greeklish heuristics.
 - `src/content/dom.ts`: DOM querying, badge injection, and injected panel styles.
@@ -50,6 +63,7 @@ npm run build
 
 - Heuristics are intentionally simple and will produce false positives and false negatives.
 - The extension only targets desktop YouTube watch pages.
+- The current bundled icons are functional placeholders, not final brand artwork.
 - It focuses on top-level comment threads and does not separately classify nested replies.
 - Styling is injected directly by the content script and may need tuning if YouTube changes its DOM.
 

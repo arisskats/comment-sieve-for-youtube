@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title>Comment Sieve for YouTube placeholder icon</title>
+  <desc>Rounded red square with a light funnel and two gold sieve lines.</desc>
+  <rect x="10" y="10" width="108" height="108" rx="24" fill="#d23a1f" />
+  <path
+    d="M28 31h72L72 64v29H56V64L28 31Z"
+    fill="#f6f1e9"
+    stroke="#30241f"
+    stroke-linejoin="round"
+    stroke-width="7"
+  />
+  <path d="M39 42h50" stroke="#ffce5c" stroke-linecap="round" stroke-width="6" />
+  <path d="M46 58h36" stroke="#ffce5c" stroke-linecap="round" stroke-width="6" />
+</svg>

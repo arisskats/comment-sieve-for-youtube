@@ -13,10 +13,10 @@
 - Strengths:
   - Minimal permission footprint: only `storage` plus YouTube host access.
   - Local-only processing model with no network requests, remote code, analytics, or account handling.
-  - Clear, narrow scope: filter and label comments on YouTube watch pages.
+  - Clear, narrow scope: filter and label comments on desktop YouTube watch pages.
   - Build output is simple and reproducible with a dependency-free local bundler.
 - Release blockers or weak areas:
-  - No extension icons are present yet, which blocks a real Chrome Web Store submission.
+  - The extension now has functional placeholder icons, but they are not strong final branding.
   - No screenshot assets or promo art are included yet.
   - No automated tests exist for classifier behavior, DOM integration, or storage state.
   - No manual compatibility matrix is documented across Chrome versions, logged-in/logged-out states, themes, or language variants.
@@ -31,6 +31,6 @@
 
 ## Recommended submission posture
 
-- Submit only after adding store-ready icons and screenshot assets.
+- Submit only after capturing the planned screenshots and deciding whether the placeholder icon pack is sufficient for launch.
 - Keep the listing explicit that comment analysis happens locally in the browser.
 - Avoid claims such as `AI moderation`, `accurate detection`, or `blocks abuse automatically`.
