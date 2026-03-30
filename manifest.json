@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Comment Sieve for YouTube",
+  "short_name": "Comment Sieve",
+  "version": "0.2.0",
+  "description": "Filter YouTube comments on watch pages with local heuristic labels for spam, toxicity, questions, positive comments, and Greeklish.",
+  "minimum_chrome_version": "114",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "https://m.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/watch*",
+        "https://youtube.com/watch*",
+        "https://m.youtube.com/watch*"
+      ],
+      "js": ["assets/content.js"],
+      "css": ["assets/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

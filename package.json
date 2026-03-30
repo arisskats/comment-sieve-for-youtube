@@ -1,0 +1,11 @@
+{
+  "name": "youtube-comment-filter",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "typecheck": "node scripts/build.mjs --check"
+  }
+}
